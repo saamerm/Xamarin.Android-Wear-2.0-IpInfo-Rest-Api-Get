@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{0509AF6E-161E-4D9B-AE82-ED4367E37CC7}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TestButton2/Properties/AndroidManifest.xml">
+    <Files>
+      <File FileName="TestButton2/MainActivity.cs" Line="49" Column="1" />
+      <File FileName="TestButton2/IpInfoItemModel.cs" Line="13" Column="43" />
+      <File FileName="TestButton2/Properties/AndroidManifest.xml" Line="6" Column="12" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/saamer.mansoor/Projects/TestButton2/TestButton2/MainActivity.cs" relfile="TestButton2/MainActivity.cs" line="49" column="21" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TestButton2 AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MultiItemStartupConfigurations />
+</Properties>
