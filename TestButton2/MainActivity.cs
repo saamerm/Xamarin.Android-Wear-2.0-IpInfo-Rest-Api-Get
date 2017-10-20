@@ -46,23 +46,25 @@ namespace TestButton2
 
                     //var manager = NotificationManagerCompat.From(this);
                     //manager.Notify(1, notification);
-                    if (count == 1)
-                    {
-                        LedOn();
-                    }
-                    else
-                    {
-                        LedOff();
-                    }
-
 
                     HttpClient client = new HttpClient();
                     Uri uri = new Uri("http://ipinfo.io/json");
                     string obstring = await client.GetStringAsync(uri);
                     IpInfoItemModel info = JsonConvert.DeserializeObject<IpInfoItemModel>(obstring);
+                    if (count == 1)
+                    {
+                        LedOn();
+                        button.Text = info.city;
+                    }
+                    else
+                    {
+                        LedOff();
+                        button.Text = "Off";
+                    }
                     count *= -1;
+
                     //button.Text = "Check Notification!";
-                    button.Text = info.city;
+                   
                 };
             };
         }
