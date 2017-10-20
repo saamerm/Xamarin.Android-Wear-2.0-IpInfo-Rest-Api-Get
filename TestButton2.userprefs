@@ -9,7 +9,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/saamer.mansoor/Projects/TestButton2/TestButton2/MainActivity.cs" relfile="TestButton2/MainActivity.cs" line="49" column="21" />
+      <Breakpoint file="/Users/saamer.mansoor/Documents/GitHub/Xamarin.Android-Wear-2.0-IpInfo-Rest-Api-Get/TestButton2/MainActivity.cs" relfile="TestButton2/MainActivity.cs" line="49" column="21" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -10,6 +10,7 @@ using Android.Views;
 using Android.Widget;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace TestButton2
 {
@@ -17,7 +18,9 @@ namespace TestButton2
     public class MainActivity : Activity
     {
         int count = 1;
-
+        string accessToken = "e54ec36b6b139319129d8cd075cb88f095a9dce7"; //This is your Particle Cloud Access Token
+        string deviceId = "28003d001847343338333633"; //This is your Particle Device Id
+        string partilceFunc = "led"; //This is the name of your Particle Function
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -35,26 +38,78 @@ namespace TestButton2
 
                 button.Click += async delegate
                 {
-                    var notification = new NotificationCompat.Builder(this)
-                        .SetContentTitle("Button tapped")
-                        .SetContentText($"Button tapped {count++} times!")
-                        .SetSmallIcon(Android.Resource.Drawable.StatNotifyVoicemail)
-                        .SetGroup("group_key_demo").Build();
+                    //var notification = new NotificationCompat.Builder(this)
+                    //    .SetContentTitle("Button tapped")
+                    //    .SetContentText($"Button tapped {count++} times!")
+                    //    .SetSmallIcon(Android.Resource.Drawable.StatNotifyVoicemail)
+                    //    .SetGroup("group_key_demo").Build();
 
-                    var manager = NotificationManagerCompat.From(this);
-                    manager.Notify(1, notification);
+                    //var manager = NotificationManagerCompat.From(this);
+                    //manager.Notify(1, notification);
+                    if (count == 1)
+                    {
+                        LedOn();
+                    }
+                    else
+                    {
+                        LedOff();
+                    }
+
 
                     HttpClient client = new HttpClient();
                     Uri uri = new Uri("http://ipinfo.io/json");
                     string obstring = await client.GetStringAsync(uri);
                     IpInfoItemModel info = JsonConvert.DeserializeObject<IpInfoItemModel>(obstring);
-
-                    button.Text = "Check Notification!";
+                    count *= -1;
+                    //button.Text = "Check Notification!";
                     button.Text = info.city;
                 };
             };
         }
+        public void LedOn(string changeValue = "on")
+        {
+            changeValue = "on";
+            //string accessToken = "e54ec36b6b139319129d8cd075cb88f095a9dce7"; //This is your Particle Cloud Access Token
+            //string deviceId = "28003d001847343338333633"; //This is your Particle Device Id
+            //string partilceFunc = "led"; //This is the name of your Particle Function
+
+            HttpClient client = new HttpClient
+            {
+                BaseAddress =
+                new Uri("https://api.particle.io/")
+            };
+
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("access_token", accessToken),
+                new KeyValuePair<string, string>("args", changeValue )
+            });
+
+            var result = client.PostAsync("v1/devices/" + deviceId + "/" + partilceFunc, content);
+        }
+        public void LedOff (string changeValue = "off")
+        {
+            changeValue = "off";
+            //string accessToken = "e54ec36b6b139319129d8cd075cb88f095a9dce7"; //This is your Particle Cloud Access Token
+            //string deviceId = "28003d001847343338333633"; //This is your Particle Device Id
+            //string partilceFunc = "led"; //This is the name of your Particle Function
+
+            HttpClient client = new HttpClient
+            {
+                BaseAddress =
+                new Uri("https://api.particle.io/")
+            };
+
+            var content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("access_token", accessToken),
+                new KeyValuePair<string, string>("args", changeValue )
+            });
+
+            var result = client.PostAsync("v1/devices/" + deviceId + "/" + partilceFunc, content);
+        }
     }
+
 }
 
 
